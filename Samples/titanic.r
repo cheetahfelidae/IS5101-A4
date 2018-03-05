@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-data <- read.csv("/cs/home/ni23/IS5101-A4/sample/titanic.csv", sep=",")
+data <- read.csv("/cs/home/ni23/IS5101-A4/Samples/titanic.csv", sep=",")
 
 # Let's output all the data!
 data
