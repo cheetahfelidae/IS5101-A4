@@ -1,13 +1,20 @@
-data <- read.csv("/cs/home/ni23/IS5101-A4/store_sales_small.csv", sep=",")
+data <- read.csv("/Users/cheetah/Sites/IS5101-A4/store_sales_small.csv", sep = ",")
 
 print(head(data))
 
-plot(data$DayOfWeek, data$Sales, main="DayOfWeek & Sales")
+# How many
+x = length( unique( data$Store) )
 
-plot(data$StateHoliday, data$Sales, main="StateHoliday & Sales")
+# some simple graphs
+# plot(data$DayOfWeek, data$Sales, main = "DayOfWeek & Sales")
+# plot(data$StateHoliday, data$Sales, main = "StateHoliday & Sales")
+# plot(data$SchoolHoliday, data$Sales, main = "SchoolHoliday & Sales")
+# plot(data$Date, data$Sales, main = "Date & Sales")
 
-plot(data$SchoolHoliday, data$Sales, main="SchoolHoliday & Sales")
+# Calculate some correlations
+x = cor.test(data$CompetitionDistance, data$Sales)
 
-plot(data$Date, data$Sales, main="Date & Sales")
+# Investigate the effect of
+# t.test( subset(data, Survived == 1)$Age, subset(data, Survived == 0)$Age )
 
-print(cor.test(data$CompetitionDistance, data$Customers))
+print(x)

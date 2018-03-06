@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-data <- read.csv("/cs/home/ni23/IS5101-A4/Samples/titanic.csv", sep=",")
+data <- read.csv("/Users/cheetah/Sites/IS5101-A4/Samples/titanic.csv", sep=",")
 
 # Let's output all the data!
 data
@@ -13,7 +13,6 @@ head(data)
 young <- subset(data, Age < 60)
 # and anyone over 65 too, except third class
 rich.retired <- subset(data, Age > 60 & Pclass != 2)
-
 
 # Combine some conditions together: over-60s in third class
 subset(data, Age >= 60 & Pclass == 3)
@@ -61,4 +60,6 @@ nrow( subset(data, Sex=="male" & Survived == 1) ) / nrow( subset(data, Survived 
 nrow( subset(data, Sex=="female" & Survived == 1) ) / nrow( subset(data, Survived == 1) )
 
 # Investigate the effect of age on survival
-t.test( subset(data, Survived == 1)$Age, subset(data, Survived == 0)$Age )
+x = t.test( subset(data, Survived == 1)$Age, subset(data, Survived == 0)$Age )
+
+print(x)
