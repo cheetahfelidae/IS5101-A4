@@ -3,18 +3,24 @@ data <- read.csv("/Users/cheetah/Sites/IS5101-A4/store_sales_small.csv", sep = "
 print(head(data))
 
 # How many
-x = length( unique( data$Store) )
+x = length(unique(data$Assortment))
 
-# some simple graphs
 # plot(data$DayOfWeek, data$Sales, main = "DayOfWeek & Sales")
+
 # plot(data$StateHoliday, data$Sales, main = "StateHoliday & Sales")
+
+# Were sales affected by the closure of public schools?
 # plot(data$SchoolHoliday, data$Sales, main = "SchoolHoliday & Sales")
-# plot(data$Date, data$Sales, main = "Date & Sales")
+# print(t.test(subset(data, SchoolHoliday == 1)$Sales, subset(data, SchoolHoliday == 0)$Sales))
 
-# Calculate some correlations
-x = cor.test(data$CompetitionDistance, data$Sales)
+# plot(data$Assortment, data$Sales, main = "Assortment & Sales")
 
-# Investigate the effect of
-# t.test( subset(data, Survived == 1)$Age, subset(data, Survived == 0)$Age )
+# print(cor.test(data$CompetitionDistance, data$Sales))
 
-print(x)
+# Were sales affected by running promotions?
+plot(data$Promo, data$Sales, main = "Promo & Sales")
+print(t.test(subset(data, Promo == 1)$Sales, subset(data, Promo == 0)$Sales))
+
+# Were sales affected by running consecutive promotions?
+plot(data$Promo2, data$Sales, main = "Promo2 & Sales")
+print(t.test(subset(data, Promo2 == 1)$Sales, subset(data, Promo2 == 0)$Sales))
